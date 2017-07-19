@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>CheckValid-method 1</title>
+<meta char="utf-8">
+<script>
+	function validate(){
+		var inputs = document.querySelectorAll('input');
+		for(var i=0; i<inputs.length; i++){
+			if(inputs[i].willValidate && !inputs[i].checkValidity()){
+				alert(inputs[i].title+"：输入错误！");
+				inputs[i].focus();
+				return false;			
+			}
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+	<form action="html_checkValid1.html" method="post" novalidate onsubmit="return validate();">
+		<p>telephone#:<input type="tel" pattern="\d*" title="电话号码"></p>
+		<p>type#(10~50):<input type="number" min="10" max="50" step="2" value="20" title="型号"></p>
+		<p><input type="submit" value="提交"></p>
+	</form>
+</body>
+</html>

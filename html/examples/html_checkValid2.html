@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>CheckValid-method 2</title>
+<meta char="utf-8">
+<script>
+	function showInvalidMessage(){
+		obj = event.currentTarget;
+		if(!obj.checkValidity()){
+			var status = obj.validity;
+			if(status.patternMismatch){ alert("模式不匹配！"); }
+			else if(status.typeMismatch){ alert("类型不匹配！"); }
+			else if(status.rangeUnderflow){ alert("值太小！"); }
+			else if(status.rangeOverflow){ alert("超出范围！"); }
+			else{ alert("填写错误！"); }
+		} // customError, rangeUnderflow, stepMismatch, tooLong, valid, valueMissing
+	}
+</script>
+</head>
+<body>
+	<form action="html_checkValid2.html" method="post">
+		<p>telephone#:<input type="tel" pattern="\d*" title="电话号码"  oninput="showInvalidMessage()"></p>
+		<p>type#(10~50):<input type="number" min="10" max="50" step="2" value="20" title="型号" oninput="showInvalidMessage()"></p>
+		<p><input type="submit" value="提交"></p>
+	</form>
+</body>
+</html>

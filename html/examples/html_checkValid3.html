@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>CheckValid-method 3</title>
+<meta char="utf-8">
+</head>
+<body>
+	<form action="html_checkValid3.html" method="post">
+		<p>密码：<input type="password" id="password"></p>
+		<p>重复密码：<input type="password" id="repassword"></p>
+		<p><input type="submit" value="提交"></p>
+	</form>
+	<script>
+		var repass = document.getElementById("repassword");
+		repass.addEventListener("input",
+			function(e){
+				var pass = document.getElementById("password");
+				if(e.target.value===pass.value){
+					e.target.setCustomValidity("");
+				}
+				else{
+					e.target.setCustomValidity("两次输入的密码不同！");
+				}
+			}, false)
+	</script>
+</body>
+</html>

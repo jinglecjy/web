@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>CheckValid-method 4</title>
+<meta char="utf-8">
+</head>
+<body>
+	<form action="html_checkValid4.html" method="post">
+		<p>编号：<input type="text" id="num" pattern="\d*" title="全数字"></p>
+		<p><input type="submit" value="提交"></p>
+	</form>
+	<script>
+		function logInvalid(){
+			alert("要求全数字！");
+		}
+		var num = document.getElementById("num");
+		num.addEventListener("invalid", logInvalid, false);
+	</script>
+</body>
+</html>
