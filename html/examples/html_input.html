@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta char="utf-8">
+<title>input元素示例（html5）</title>
+<style type="text/css">
+fieldset {
+	width: 500px;
+}
+span {
+	color: blue;
+}
+</style>
+<script>
+	// 滑动条数值显示
+	function showVal(slider){
+		console.log(slider);
+		document.getElementById('rangeValue').innerHTML = slider;
+	}
+</script>
+</head>
+<body>
+	<fieldset><legend>input元素示例(html5)</legend>
+	<form action="html_input.jsp" method="post">
+		<span>---------- 不同的输入类型(type)展示 ----------</span><br/>
+		url输入类型(关闭下拉提示)：<input type="url" autocomplete="off"><br/>
+		tel输入类型(pattern)：<input type="tel" pattern="\d*" title="Numbers only"><br/>
+		email输入类型(placeholder)：<input type="email" placeholder="Input email address here"><br/>
+		search输入类型(autofocus)：<input type="search" autofocus><br/>
+		text输入类型/语法检查(En)/必须输入：<input type="text" spellcheck="true" lang="en" required="required"><br/>
+		number输入类型(min/max/step属性)：<input type="number" min="10" max="50" step="2" value="20"><br/>
+		color输入类型：<input type="color"><br/>
+		time输入类型：<input type="time"><br/>
+		date输入类型：<input type="date"><br/>
+		datetime-local输入类型：<input type="datetime-local"><br/>
+		datetime输入类型：<input type="datetime"><br/>
+		month输入类型(min/max/step属性)：<input type="month" max="2016-08" min="2010-02" step="2"><br/>
+		week输入类型：<input type="week"><br/>
+		submit输入类型：<input type="submit" value="提交" /><br/>
+		file输入类型(multiple)：<input type="file" multiple><br/>
+		range属性：<input type="range" min="5" max="10" step="1" oninput="showVal(this.value)" onchange="showVal(this.value)">
+		&nbsp;&nbsp;<span id="rangeValue"></span><br/>
+		<br/>
+		<span>---------- 其他属性展示 ----------</span><br/>
+		datalist(text输入框选择输入)：<input id="myCar" list="cars" /><br/>
+		<datalist id="cars">
+			<option value="BMW">
+			<option value="Ford">
+			<option value="Volvo">
+		</datalist>
+		progress元素(显示进度)：<progress min="10" max="50" value="20">20</progress><br/>
+		meter元素(仪表读数)：<meter low="0.2" high="0.8" value="0.85"> 0.85 0f 1 </meter>
+	</form>
+	</fieldset>
+</body>
+</html>
