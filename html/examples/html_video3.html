@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head><title>Video 3(multiple video)</title><meta char="utf-8"></head>
+<body>
+	<h2>--------- 多视频的轮播示例 --------</h2>
+	<video id="video" src="videos/test1.mp4" style="width:600px" autoplay controls></video>
+	<script>
+		var video = document.getElementById("video");
+		var URL = ["videos/test1.mp4", "videos/test2.mp4", "videos/test3.mp4"];
+		var index = 0;
+		video.addEventListener("ended",
+			function(){
+				if(index==2){ index=0; }
+				else{ index = index+1; }
+				video.src=URL[index];
+				video.load();
+			});
+	</script>
+</body>
+</html>

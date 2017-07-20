@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head><title>Video 2(progress bar/fast backward/fast forward)</title><meta char="utf-8"></head>
+<body>
+	<h2>--------- 媒体对象的播放进度条、快进、快退示例 --------</h2>
+	<video id="video" src="videos/test1.mp4" style="width:600px" autoplay></video>
+	播放进度：<input type="range" min="0" max="100" value="0" step="1" 
+	       onchange="rangeChange()" style="width:600px" id="range"><br/>
+	<button id="fb" title="Fast Backward">&lt;&lt;</button>&nbsp;&nbsp;
+	<button id="ff" title="Fast Forward">&gt;&gt;</button>
+	<script>
+		var video = document.getElementById("video");
+		var range = document.getElementById("range");
+		var fb = document.getElementById("fb");
+		var ff = document.getElementById("ff");
+
+		video.addEventListener("timeupdate", timeupdate);
+		fb.addEventListener("click", function(){video.playbackRate -= .25;});
+		ff.addEventListener("click", function(){video.playbackRate += .25;});
+		function timeupdate(){
+			range.value = (video.currentTime/video.duration)*100;
+		}
+		function rangeChange(){
+			video.currentTime = video.duration*range.value/100;
+		}
+	</script>
+</body>
+</html>

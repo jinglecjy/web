@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head><title>Video 1(Play/Pause/Volume/Muted)</title><meta char="utf-8"></head>
+<body>
+	<h2>--------- 媒体对象的播放、暂停、音量按钮示例 --------</h2>
+	<video id="video" src="videos/test1.mp4" style="width:600px"></video>
+	<button id="play" title="Play Button">&gt;</button>&nbsp;
+	<button id="pause" title="Pause Button">||</button>&nbsp;&nbsp;
+	<button id="volumeUp" title="Volume Up">+</button>&nbsp;
+	<button id="volumeDown" title="Volume Down">-</button>&nbsp;&nbsp;
+	<input type="checkbox" id="muted" title="Muted">muted
+	<script>
+		var video = document.getElementById("video");
+		var btnPlay = document.getElementById("play");
+		var btnPause = document.getElementById("pause");
+		var btnVolUp = document.getElementById("volumeUp");
+		var btnVolDown = document.getElementById("volumeDown");
+		var btnMuted = document.getElementById("muted");
+		btnPlay.addEventListener("click", function(){video.play();});
+		btnPause.addEventListener("click", function(){video.pause();});
+		btnVolUp.addEventListener("click", 
+			function(){
+				video.volume += 0.1;
+				if(video.volume<0) video.volume=0;
+			});
+		btnVolDown.addEventListener("click", 
+			function(){
+				video.volume -= 0.1;
+				if(video.volume<0) video.volume=0;
+			});
+		btnMuted.addEventListener("click", 
+			function(){video.muted=btnMuted.checked;});
+	</script>
+</body>
+</html>
