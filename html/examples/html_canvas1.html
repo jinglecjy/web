@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head><title>canvas(填充/弧线截取/图片显示)</title><meta char="utf-8"></head>
+<body>
+<canvas id="canvas" style="border:solid 1px black; height:400px; width:800px">
+canvas is not supported!
+</canvas>
+<script>
+	var can = document.getElementById("canvas");
+
+	if(can && can.getContext) {
+		var context = canvas.getContext('2d');
+		if(context) {
+			context.fillStyle = "#ff0000"; // 填充颜色
+			context.fillRect(20, 20, 100, 100); // 填充形状
+			
+			// 截取某段弧线：arc(cx, cy, radius, start_angle, end_angle, 顺时针);
+			context.arc(60, 100, 40, 1.1*Math.PI, Math.PI*1.9, false);
+			context.stroke();
+
+			var img = new Image();
+			// context.drawImage(img, sx, sy, swidth, sheight, x, y, width, height);
+			img.addEventListener("load",
+				function(){context.drawImage(img, 120, 20);}, false);
+			img.src = "images/eg_sun.gif";
+		}
+	}
+</script>
+</body>
+</html>

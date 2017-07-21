@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>canvas(文本填充)</title>
+<meta char="utf-8">
+<style>
+body {
+	background: #eeeeee;
+}
+#canvas {
+	-webkit-box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 4px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 4px;
+	box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 4px;
+	border: 1px solid cornflowerblue;
+}
+#controls {
+	margin: 10px;
+}
+</style>
+</head>
+<body>
+<canvas id="canvas" style="border:solid 1px black; height:300px; width:700px">
+canvas is not supported!
+</canvas>
+<script>
+	var canvas = document.getElementById("canvas");
+
+	if(canvas && canvas.getContext) {
+		var context = canvas.getContext('2d');
+		var text = "Centered";
+		var textMetrics;
+		var SQUARE_WIDTH = 20; // 小正方形宽
+		var FONT_HEIGHT = 128;
+		
+		// 画网格线
+		function drawGrid(color, stepx, stepy) {
+			context.save();
+			context.strokeStyle = color;
+			context.fillStyle = "#ffffff";
+			context.lineWidth = 0.5;
+			context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+			for (var i=stepx+0.5; i<context.canvas.width; i+=stepx){
+				context.beginPath();
+				context.moveTo(i, 0);
+				context.lineTo(i, context.canvas.height);
+				context.stroke();
+			}
+			for (var i=stepy+0.5; i<context.canvas.height; i+=stepy) {
+				context.beginPath();
+				context.moveTo(0, i);
+				context.lineTo(context.canvas.width, i);
+				context.stroke();
+			}
+			context.restore();
+		};
+
+		// 画文本
+		function drawText() {
+			context.fillStyle = 'orange';
+			context.strokeStyle = 'cornflowerblue';
+			context.fillText(text, canvas.width/2, canvas.height/2);
+			context.strokeText(text, canvas.width/2, canvas.height/2);
+		};
+
+		// 画中央的小正方形
+		function drawCenterSquare() {
+			context.fillStyle = 'rgba(255, 0, 0, 0.4)';
+			context.strokeStyle = 'black';
+			context.fillRect(canvas.width/2-SQUARE_WIDTH/2, 
+							canvas.height/2-SQUARE_WIDTH/2, 20, 20);
+			context.strokeRect(canvas.width/2-SQUARE_WIDTH/2, 
+							   canvas.height/2-SQUARE_WIDTH/2, 20, 20);
+		};
+		context.font = '64px Helvetica';
+		context.textBaseline = 'middle'; // 设置文本的垂直对齐格式
+		context.textAlign = 'center'; // 设置文本的水平对齐方式
+		textMetrics = context.measureText(text);
+		drawGrid('lightgray', 10, 10);
+		drawText();
+		drawCenterSquare();
+	}
+</script>
+</body>
+</html>
