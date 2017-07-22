@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta char="utf-8">
+<title>元素拖放</title>
+<script>
+	function allowDrop(ev) { // dragover事件规定在何处放置被拖动的数据
+		ev.preventDefault(); // 只有阻止对元素的默认处理方式，才能放入其他元素
+	}
+	function drag(ev) {
+		ev.dataTransfer.setData("Text", ev.target.id);
+	}
+	function drop(ev) {
+		ev.preventDefault(); // drop事件的默认动作是打开链接
+		var data = ev.dataTransfer.getData("Text");
+		ev.target.appendChild(document.getElementById(data));
+	}
+</script></head>
+<body>
+<p>请把图片拖放到矩形中：</p>
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"
+     style="width:300px; height:80px; padding:8px; border:solid;"></div>
+<img id="drag1" src="images/i_love_html.jpg" draggable="true" 
+     style="width:50px; height:50px;" ondragstart="drag(event)" />
+</body>
+</html>
