@@ -1,0 +1,25 @@
+div:nth-child(1) {
+	white-space: pre-wrap;
+	border: 2px solid blue;
+	width: 44em;
+	height: 700px;
+	padding: 20px;
+	margin: 30px;
+	background: url('../images/cloth.jpeg');
+	background-repeat: repeat;      /* 重复填充整个区域 */
+	background-clip: padding-box;   /* 填充范围 */
+	background-origin: border-box; /* 填充第一个图的位置 */
+	background-attachment: fixed;   /* 背景图是否随区域内容滚动 */
+	background-size: 20%;           /* 背景图大小 */
+	background-position: left left; /* 背景图的对齐位置 */
+}
+
+div:nth-child(2) {
+	white-space: pre-wrap;
+	border: 2px solid red;
+	width: 44em;
+	padding: 20px;
+	margin: 30px;
+	background: linear-gradient(to bottom right, orange, green, blue);
+	background-clip: padding-box;   /* 填充范围 */
+}
