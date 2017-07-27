@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html><head>
+<style>
+.box {
+	border: 1px solid black;
+	padding: 100px 0px;
+	perspective: 800px;             /* 设置观看的距离 */
+	-webkit-perspective: 800px;     /* Safari and Chrome */
+	perspective-origin: 50% 50%;  /* 设置观看的角度 */
+	-webkit-perspective-origin: 50% 50%;
+}
+.cube {
+	width: 300px;
+	height: 300px;
+	margin: 20px auto;
+	position: relative;
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+}
+.face {
+	width: 200px;
+	height: 200px;
+	background: rgba(255, 0, 0, 0.5);
+	position: absolute;
+	font-size: 200px;
+	color: black;
+	line-height: 200px;
+	text-align: center;
+	border: 2px solid black;
+}
+#face2 {
+	transform: rotateY(-90deg);
+	-webkit-transform: rotateY(-90deg);
+	transform-origin: right;
+	-webkit-transform-origin: right;
+}
+#face3 {
+	transform: translateZ(-200px);
+	-webkit-transform: translateZ(-200px);
+}
+#face4 {
+	transform: rotateY(90deg);
+	-webkit-transform: rotateY(90deg);
+	transform-origin: left;
+	-webkit-transform-origin: left;
+}
+#face5 {
+	transform: rotateX(-90deg);
+	-webkit-transform: rotateX(-90deg);
+	transform-origin: top;
+	-webkit-transform-origin: top;
+}
+#face6 {
+	transform: rotateX(90deg);
+	-webkit-transform: rotateX(90deg);
+	transform-origin: bottom;
+	-webkit-transform-origin: bottom;
+}
+</style>
+</head>
+<body>
+<div class="box">
+	<!-- 立方体的六个面 -->
+	<div class="cube">
+		<div class="face" id="face1">1</div>
+		<div class="face" id="face2">2</div>
+		<div class="face" id="face3">3</div>
+		<div class="face" id="face4">4</div>
+		<div class="face" id="face5">5</div>
+		<div class="face" id="face6">6</div>
+	</div>
+</div>
+</body>
+</html>
