@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>修饰边框</title>
+<meta char="utf-8">
+<style type="text/css">
+p:nth-child(1) {
+	padding: 20px;
+	margin: 20px;
+	border: 1px solid blue;
+	border-radius: 	1.5em;
+	box-shadow: 6px 8px 3px #999,
+	            inset 3px 4px 3px #999;
+}
+p:nth-child(2) {
+	width: 400px;
+	height: 100px;
+	margin: 20px;
+	border: 60px solid;
+	border-image: url('images/border.png') 30 30 30 30 stretch;
+}
+</style>
+</head>
+<body>
+<p>创建圆角边框<br/>outset阴影<br/>inset嵌入式阴影<br/></p>
+<p>用图像做边界</p>
+</body>
+</html>
