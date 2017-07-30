@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>flexibox</title>
+<style>
+.box {
+	display: -webkit-flex;
+	display: flex;
+	margin: 0;
+	padding: 10px;
+	list-style: none;
+	background: #eee;
+	width: 400px;
+	height: 600px;
+	flex-direction: row; /* 子元素的布局方向 */
+	flex-wrap: wrap;     /* 超出容器的子元素是否回绕 */
+	justify-content: center;      /* 子元素在同一行的水平对齐方式 */
+	align-content: space-around;  /* 所有行的堆叠方式 */
+}
+.box li {
+	width: 100px;
+	height: 100px;
+	border: 1px solid #aaa;
+	text-align: center;
+}
+.box li:nth-child(4) {
+	order: -1;      /* 子元素的编排位置，越小越往前，默认为0 */
+}
+.box li:nth-child(2) {
+	flex-grow: 4;   /* 可扩展的比例，默认不扩展为0 */
+	flex-shrink: 3; /* 可伸缩的比例，默认不伸缩为0 */
+	flex-basis: 400px; /* 子元素伸缩的基准线 */
+}
+</style>
+</head>
+<body>
+<ul id="box" class="box">
+	<li>a</li>
+	<li>b</li>
+	<li>c</li>
+	<li>d</li>
+	<li>e</li>
+</ul>
+</body>
+</html>
