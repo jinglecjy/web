@@ -1,0 +1,80 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>shadow(只对IE有效)</title>
+<style>
+.wrapper {
+	width: 90%;
+	height: 600px; /* (百分数或份数)分配高度才有意义 */
+	font-size: 2em;
+	margin: 0 auto;
+	display: -ms-grid;
+	display: grid;
+	-ms-grid-columns: 30% 30% 40%;
+	grid-columns: 30% 30% 40%;
+	-ms-grid-rows: 1fr 1fr 1fr 1.5fr;
+	grid-rows: 1fr 1fr 1fr 1.5fr; /* 1fr表示1份(1 fraction) */
+}
+.box {
+	background-color: gray;
+	color: #fff;
+	font-size: 150%;
+	padding: 20px;
+	text-align: center;
+	vertical-align: middle;
+}
+.a {
+	background-color: brown;
+	-ms-grid-column: 1;
+	-ms-grid-column-span: 3;
+	-ms-grid-row: 1;
+	grid-column: 1;      /* 定义在第几列，默认为第1列 */
+	grid-column-span: 3; /* 定义跨越多列，默认只占一个单元格 */
+	grid-row: 1;         /* 定义在第几行，默认为第1行 */
+}
+.b {
+	background-color: purple;
+	-ms-grid-column: 1;
+	-ms-grid-column-span: 3;
+	-ms-grid-row: 4;
+}
+.c {
+	background-color: blue;
+	-ms-grid-column: 1;
+	-ms-grid-row: 2;
+	-ms-grid-row-span: 2;
+}
+.d {
+	background-color: red;
+	-ms-grid-column: 2;
+	-ms-grid-row: 2;
+}
+.e {
+	background-color: green;
+	-ms-grid-column: 3;
+	-ms-grid-row: 2;
+}
+.f {
+	background-color: yellow;
+	color: black;
+	-ms-grid-column: 2;
+	-ms-grid-column-span: 2;
+	-ms-grid-row: 3;
+}
+.g {/* 无定义位置，默认在第一行第一列，与A重叠 */
+	background-color: rgba(0,0,0,0.5);
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+<div class="box a">A</div>
+<div class="box b">B</div>
+<div class="box c">C</div>
+<div class="box d">D</div>
+<div class="box e">E</div>
+<div class="box f">F</div>
+<div class="box g">G</div>
+</div>
+</body>
+</html>
