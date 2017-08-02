@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>DOM(Ajax替换内部文本)</title>
+<script type="text/javascript">
+function replace(){
+	var url="http://172.18.187.11:8080/lab/js/haha.html";
+	var ctrlID="a1";
+	var param=null;
+	var xmlhttp=new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		/*  xmlhttp.readyState == 
+		    0: 请求未初始化
+			1: 服务器连接已建立
+			2: 请求已接收
+			3: 请求处理中
+			4: 请求已完成，且响应已就绪
+		*/
+		if(xmlhttp.readyState == 4) // 读取服务器响应结束
+		{
+			if(xmlhttp.status>=200 && xmlhttp.status<300 
+			      || xmlhttp.status>=304) {
+				//alert(xmlhttp.responseText);
+				var obj = document.getElementById(ctrlID);
+				obj.innerHTML = xmlhttp.responseText; // 可以加上textarea
+			}
+			else {
+				alert("Request was unsuccessful:"+xmlhttp.status);
+			}
+		}
+	}
+	xmlhttp.open("get", url, true);
+	xmlhttp.send(param);
+}
+</script>
+</head>
+<body>
+	<h1 id="a1">DOM 第一课</h1>
+	<p onclick="replace()">点击此处请求新的内容</p>
+</body>
+</html>
