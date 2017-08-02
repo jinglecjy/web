@@ -19,7 +19,7 @@ function replace(){
 		if(xmlhttp.readyState == 4) // 读取服务器响应结束
 		{
 			if(xmlhttp.status>=200 && xmlhttp.status<300 
-			      || xmlhttp.status>=304) {
+			      || xmlhttp.status==304) {
 				//alert(xmlhttp.responseText);
 				var obj = document.getElementById(ctrlID);
 				obj.innerHTML = xmlhttp.responseText; // 可以加上textarea
