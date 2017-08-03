@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>AJAX技术 -- POST</title>
+<script type="text/javascript">
+function serialize(form) { // 对表单数据进行串行化
+	if(form==null) return "";
+	var parts=[], field=null, i, len=form.elements.length, j, optlen, option, optValue;
+	for(i=0; i<len; i++){
+		field=form.elements[i];
+		switch(field.type) {
+			case "select-one":  //<select>元素
+			case "select-multiple":
+				if(field.name.length) {
+					optlen=field.options.length;
+					for(j=0; j<optlen; j++){
+						option = field.options[j];
+						if(option.selected) {
+							optValue = "";
+							if(option.hasAttribute) {
+								optValue = (option.hasAttribute("value"))?option.value:option.text;
+							} else {
+								optValue = (option.attributes["value"].specified)?option.value:option.text;
+							} // if
+							parts.push(encodeURIComponent(field.name)+"="+encodeURIComponent(optValue));
+						} // if
+					} // for
+				} // if
+				break; // <select>元素
+			
+			case "undefined":       // 字段集，默认操作
+			case "file":            // 文件输入，默认操作
+			case "submit":          // 提交按钮，默认操作
+			case "reset":           // 重置按钮，默认操作
+			case "button": break;   // 自定义按钮，不处理
+			case "radio":           // 单选按钮，默认操作
+			case "checkbox":        // 复选框，默认操作
+				if(!field.checked) {break;}
+			/* 执行默认操作 */
+			default:
+				if(field.name.length) {
+					parts.push(encodeURIComponent(field.name)+"="+encodeURIComponent(field.value));
+				}
+		} // switch
+	} // for
+	return parts.join("&");
+} // function serialize(form)
+
+function post(){
+	var url="ajaxPost.jsp";
+	var ctrlID="showDiv";
+	var param=null;
+	for(var i=0; i<arguments.length; i++){ // 假如有表单数据
+		if(i==0) param="";
+		param = serialize(arguments[i])+param;
+	}
+	var xmlhttp=new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		/*  xmlhttp.readyState == 
+		    0: 请求未初始化
+			1: 服务器连接已建立
+			2: 请求已接收
+			3: 请求处理中
+			4: 请求已完成，且响应已就绪
+		*/
+		if(xmlhttp.readyState == 4) // 读取服务器响应结束
+		{
+			if(xmlhttp.status>=200 && xmlhttp.status<300 
+			      || xmlhttp.status==304) {
+				//alert(xmlhttp.responseText);
+				var obj = document.getElementById(ctrlID);
+				obj.innerHTML = xmlhttp.responseText; // 可以加上textarea
+			}
+			else {
+				alert("Request was unsuccessful:"+xmlhttp.status);
+			}
+		}
+	}
+	xmlhttp.open("post", url, true);
+	xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');  
+	xmlhttp.send(param);
+}
+</script>
+</head>
+<body>
+	<h1>AJAX技术 -- POST</h1>
+	<form name="frm1">
+		文本框：<input name="p1" type="text" value="hello"/><br/>
+		密码框：<input name="p2" type="password" value="world"/><br/>
+		下拉列表框：<select name="Car">
+						<optgroup label="Swedish Cars">
+							<option value="volvo">Volvo</option>
+							<option value="saab">Saab</option>
+						</optgroup>
+						<optgroup label="German Cars">
+							<option value="mercedes">Mercedes</option>
+							<option value="audi">Audi</option>
+						</optgroup>
+					</select>
+		<br/>
+		单选框：<input name="sex" type="radio" value="男">男&nbsp;
+			  <input name="sex" type="radio" value="女">女&nbsp;
+			  <input name="sex" type="radio" value="保密">保密<br/>
+		复选框：<input name="hobby" type="checkbox" value="阅读">阅读&nbsp;
+              <input name="hobby" type="checkbox" value="运动">运动&nbsp;
+              <input name="hobby" type="checkbox"  value="购物">购物<br/>
+		<input id="p3" type="button" onclick="post(frm1)" value="showHTML"/><br/>
+	</form><br/><br/>
+	<div id="showDiv">这里会显示http请求返回的内容</div>
+</body>
+</html>
