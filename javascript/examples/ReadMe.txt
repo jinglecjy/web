@@ -3,3 +3,4 @@ webWorker.html: html5Ìá¹©µÄÒ»¸öJavaScript¶àÏß³Ì½â¾ö·½°¸£¬½«Ò»Ð©´ó¼ÆËãÁ¿µÄ´úÂë½»Ó
 Ajax_GET.html: Ê¹ÓÃAjax¼¼ÊõÀûÓÃ´Óweb·þÎñÆ÷ÉÏ»ñÈ¡µÄÐÅÏ¢¾Ö²¿¸üÐÂÍøÒ³
 Ajax_POST.html: Ê¹ÓÃAjax¼¼ÊõÔÚ±£³Öµ±Ç°ÍøÒ³µÄÇé¿öÏÂÌá½»±íµ¥Êý¾Ý¸øWEB·þÎñÆ÷¡£
 ajaxPost.jsp: ÏÔÊ¾Ajax_POST.htmlÌá½»¹ýÀ´µÄÊý¾Ý¡£
+test_Cookie.html: ²âÊÔcookieµÄÉèÖÃ¡¢É¾³ý¡¢»ñÈ¡(cookie_function.js)

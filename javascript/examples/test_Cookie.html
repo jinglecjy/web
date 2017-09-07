@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>set, get or delete cookie</title>
+	<script type="text/javascript" src="cookie_functions.js"></script>
+</head>
+<body>
+<div id="msg"></div>
+<script type="text/javascript">
+	var exp = new Date();
+	exp.setTime(exp.getTime()+120*10000); // 2 mins later
+	CookieUtil.set("test_name", "test_value", exp, "/", "localhost", "secure");
+	var msg=document.getElementById('msg');
+	msg.innerHTML += CookieUtil.get("test_name");
+	CookieUtil.unset("test_name", "/", "localhost", "secure");
+	msg.innerHTML += CookieUtil.get("test_name");
+</script>
+</body>
+</html>
