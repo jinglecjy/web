@@ -3,4 +3,10 @@ webWorker.html: html5Ìá¹©µÄÒ»¸öJavaScript¶àÏß³Ì½â¾ö·½°¸£¬½«Ò»Ğ©´ó¼ÆËãÁ¿µÄ´úÂë½»Ó
 Ajax_GET.html: Ê¹ÓÃAjax¼¼ÊõÀûÓÃ´Óweb·şÎñÆ÷ÉÏ»ñÈ¡µÄĞÅÏ¢¾Ö²¿¸üĞÂÍøÒ³
 Ajax_POST.html: Ê¹ÓÃAjax¼¼ÊõÔÚ±£³Öµ±Ç°ÍøÒ³µÄÇé¿öÏÂÌá½»±íµ¥Êı¾İ¸øWEB·şÎñÆ÷¡£
 ajaxPost.jsp: ÏÔÊ¾Ajax_POST.htmlÌá½»¹ıÀ´µÄÊı¾İ¡£
+wokerExample.js: Web WorkersÊÇh5Ìá¹©µÄÒ»¸öjs¶àÏß³Ì·½°¸
 test_Cookie.html: ²âÊÔcookieµÄÉèÖÃ¡¢É¾³ı¡¢»ñÈ¡(cookie_function.js)
+iframeComunication1.html: iframe×ÓÒ³ÃæÓë¸¸Ò³ÃæÖ®¼ä¡¾Í¬Óò¡¿Í¨ĞÅ£¬¸¸Ò³Ãæ
+child1.html: iframe×ÓÒ³ÃæÓë¸¸Ò³ÃæÖ®¼ä¡¾Í¬Óò¡¿Í¨ĞÅ£¬×ÓÒ³Ãæ
+iframeComunication2.html: iframe×ÓÒ³ÃæÓë¸¸Ò³ÃæÖ®¼ä¡¾¿çÓò¡¿Í¨ĞÅ£¬¸¸Ò³Ãæ
+child2.html: iframe×ÓÒ³ÃæÓë¸¸Ò³ÃæÖ®¼ä¡¾¿çÓò¡¿Í¨ĞÅ£¬×ÓÒ³Ãæ
+messenger.js: TencentÌá¹©µÄ·â×°ºÃµÄ¿çÓòÍ¨ĞÅ¿â

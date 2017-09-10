@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>iframe子页面与父页面通信(同域)</title>
+<meta charset="utf-8">
+<script type="text/javascript">
+	function sayHello(){
+		alert("child.html");
+	}
+	function say(){
+		parent.sayHello();
+		parent.window.document.getElementById("button_p").value = "the call is complete";
+	}
+</script>
+</head>
+<body>
+<p>调用父页面iframeCommunication1.html中的sayHello()函数：</p>
+<input type="button" id="button_c" name="hello" value="call" onclick="say()">
+</body>
+</html>

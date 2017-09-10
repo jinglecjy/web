@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>iframe子页面与父页面通信(跨域)</title>
+<meta charset="utf-8">
+<script src="js/messenger.js"></script>
+</head>
+<body>
+<h1>child2</h1>
+向父页面iframeCommunication2.html发送信息：<br>
+<input type="button" id="button_p" value="call" onclick="sendMessage('parent')"><br><br>
+获取信息：<pre id="output"></pre>
+<br><br>
+
+<script type="text/javascript">
+	function say(msg){
+		var output = document.getElementById("output");
+		output.innerHTML = msg;
+		console.log('in child2');
+	}
+	var messenger = new Messenger('child2', 'CROSS_DOMAIN_COMMUNICATION');
+	messenger.listen(say);
+	messenger.addTarget(window.parent, 'parent'); // 添加一个消息对象
+	// messenger.addTarget(window.parent.frames[1], 'parent'); // 与父窗口的其他子窗口通信
+	function sendMessage(name) {
+		messenger.targets[name].send('message from child2');
+	}
+
+</script>
+</body>
+</html>
