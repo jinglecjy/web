@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <head>
 <title>图片轮播</title>
-</head>
-<body>
 <!-- 思路： 
 1、首先要有个盛放图片的容器，设置为单幅图片的宽高，且overflow：hidden，这样保证每次可以只显示一个图片 
 2、container内有个放图片的list进行position的定位 ，其中的图片采用float的方式，同时当图片进行轮播时，改变list的Left值使得其显示的图片发生变化。 
@@ -10,6 +8,169 @@
 4、当鼠标滑动到图片上时，清除定时器，图片停止轮播，当鼠标移出时继续进行轮播 
 5、图片上有一组小圆点用于与当前显示的图片相对应，同时可以通过点击的方式查看对应的图片 
 6、图片可以通过点击pre,next进行左右滑动显示 	 -->
-<div></div>
+<style type="text/css">
+	.container {
+		margin: 0 auto;
+		width: 320px;
+		height: 320px;
+		overflow: hidden;
+		position: relative;
+		border: 1px solid #DDD;
+		border-radius: 10px;
+		box-shadow: 3px 3px 4px #808080;
+	}
+	.list {
+		width: 1280px;
+		height: 320px;
+		position: absolute;
+		top: 0px;
+	}
+	.list>img {
+		width: 320px;
+		height: 320px;
+		float: left;
+	}
+	ul.dots {
+		list-style: none;
+		position: absolute;
+		left: 200px;
+		top: 280px;
+	}
+	li.dot {
+		float: left;
+		margin-left: 5px;
+		width: 8px;
+		height: 8px;
+		border-radius: 10px;
+		background: grey;
+	}
+	li.dot.active {
+		background: #8080FF;
+	}
+	.pre,.next {
+		position: absolute;
+		top: 40%;
+		font-size: 40px;
+		color: white;
+		text-align: center;
+		background: rgba(0, 0, 0, 0.3);
+		display: none;
+	}
+	.pre{
+		left: 0px;
+	}
+	.next{
+		right: 0px;
+	}
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="list">
+		<img src="images/1.jpg">
+		<img src="images/2.jpg">
+		<img src="images/3.jpg">
+		<img src="images/4.jpg">
+	</div>
+	<ul class="dots">
+		<li index=1 class="active dot"></li>
+		<li index=2 class="dot"></li>
+		<li index=3 class="dot"></li>
+		<li index=4 class="dot"></li>
+	</ul>
+	<div class="pre"><</div>
+	<div class="next">></div>
+</div>
+<script type="text/javascript">
+/*  函数结构
+	                      _________________________初始化(init)__________________________                
+	                     /                                                               \
+                自动播放(autoPlay)                                     _________事件绑定(eventBind)_________
+                    /     \                                           /                  |                  \  
+	图片轮播(animation)  小点切换(dotActive)  容器鼠标悬停(stopAutoPlay)  dot点击跳转(animation&dotChange)  左右箭头点击(animation, dotActive)  
+*/
+	window.onload = init;
+
+	var timer;
+	var index=1; // 当前显示的图片编码
+
+	function init(){
+		autoPlay();
+		eventBind();
+	}
+	function autoPlay(){
+		timer = setInterval(function(){
+			animation(-320);
+			indexChange(true);
+		}, 1500);
+	}
+	function stopAutoPlay(){
+		clearInterval(timer);
+	}
+	function indexChange(add) {
+		if(add) index++;
+		else index--;
+		if(index>4) index = 1;
+		if(index<1) index = 4;
+
+		dotActive();
+	}
+	function dotActive(){
+		var dots = document.getElementsByClassName("dot");
+		var len = dots.length;
+		for(var i=0; i<len; i++) {
+			dots[i].className = "dot";
+			if(index === parseInt(dots[i].getAttribute("index"))) {
+				dots[i].className = "dot active";
+			}
+		}
+	}
+	function eventBind(){
+		// container hover event
+		var container = document.getElementsByClassName("container")[0];
+		var pre = document.getElementsByClassName("pre")[0];
+		var next = document.getElementsByClassName("next")[0];
+		container.onmouseover = function(e){
+			stopAutoPlay();
+			document.getElementsByClassName("pre")[0].style.display = "block";
+			document.getElementsByClassName("next")[0].style.display = "block";
+		}
+		container.onmouseout = function(e){
+			autoPlay();
+			pre.style.display = "none";
+			next.style.display = "none";
+		}
+
+		// arrows click events
+		pre.onclick = function(e){
+			indexChange(false);
+			animation(320);
+		}
+		next.onclick = function(e){
+			indexChange(true);
+			animation(-320);
+		}
+
+		// dot click events
+		var dots = document.getElementsByClassName("dot");
+		var len = dots.length;
+		for(var i=0; i<len; i++) {
+			(function(j){
+				dots[j].onclick = function(e){
+					var ind = parseInt(dots[j].getAttribute("index"));
+					animation(-320*(ind-index));
+					dotActive();
+				}
+			})(i);
+		}
+	}
+	function animation(offset) {
+		var list = document.getElementsByClassName("list")[0];
+		var left = parseInt(list.offsetLeft)+offset;
+		if(left<=-1280) left = 0;
+		if(left>0) left = -960;
+		list.style.left = left+"px";
+	}
+</script>
 </body>
 </html>

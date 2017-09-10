@@ -10,3 +10,4 @@ child1.html: iframe子页面与父页面之间【同域】通信，子页面
 iframeComunication2.html: iframe子页面与父页面之间【跨域】通信，父页面
 child2.html: iframe子页面与父页面之间【跨域】通信，子页面
 messenger.js: Tencent提供的封装好的跨域通信库
+slides.html: 图片轮播代码
